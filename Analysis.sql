@@ -17,6 +17,7 @@
             "cell_type": "code",
             "source": [
                 "-- Select distinct products name\r\n",
+                "USE Retail\r\n",
                 "SELECT DISTINCT(Products_Name) From dbo.dataset;"
             ],
             "metadata": {
@@ -34,14 +35,14 @@
                 {
                     "output_type": "display_data",
                     "data": {
-                        "text/html": "Total execution time: 00:00:00.059"
+                        "text/html": "Total execution time: 00:00:00.064"
                     },
                     "metadata": {}
                 },
                 {
                     "output_type": "execute_result",
                     "metadata": {},
-                    "execution_count": 2,
+                    "execution_count": 3,
                     "data": {
                         "application/vnd.dataresource+json": {
                             "schema": {
@@ -482,12 +483,13 @@
                     }
                 }
             ],
-            "execution_count": 2
+            "execution_count": 3
         },
         {
             "cell_type": "code",
             "source": [
                 "-- Select any product from the list and see how the price changed over years\r\n",
+                "-- This represents the average across whole Canada not Province\r\n",
                 "SELECT  Year,Products_Name ,ROUND(Avg([VALUE]), 2 )  AS Average_Price \r\n",
                 "FROM dbo.dataset\r\n",
                 "WHERE Products_Name = 'Onions'\r\n",
@@ -510,14 +512,14 @@
                 {
                     "output_type": "display_data",
                     "data": {
-                        "text/html": "Total execution time: 00:00:00.019"
+                        "text/html": "Total execution time: 00:00:00.031"
                     },
                     "metadata": {}
                 },
                 {
                     "output_type": "execute_result",
                     "metadata": {},
-                    "execution_count": 25,
+                    "execution_count": 4,
                     "data": {
                         "application/vnd.dataresource+json": {
                             "schema": {
@@ -592,18 +594,7 @@
                     }
                 }
             ],
-            "execution_count": 25
-        },
-        {
-            "cell_type": "markdown",
-            "source": [
-                "\r\n",
-                "<span style=\"color: #008000;\">-- Select distinct products name</span>"
-            ],
-            "metadata": {
-                "azdata_cell_guid": "dcd05c26-dcff-4088-bfa2-c6676970c0b7"
-            },
-            "attachments": {}
+            "execution_count": 4
         },
         {
             "cell_type": "markdown",
@@ -614,6 +605,136 @@
                 "language": "sql",
                 "azdata_cell_guid": "62cc14b2-a8c8-4384-bb79-c14a67272762"
             }
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "-- Lets calculate the YoY change \r\n",
+                "SELECT Year,Products_Name,ROUND(AVG(VALUE),2)AS Present,\r\n",
+                "LAG(ROUND(AVG(VALUE),2)) OVER (Order By YEAR) AS Previous,\r\n",
+                "FORMAT((AVG(VALUE)-LAG(AVG(VALUE)) OVER (Order By YEAR))/LAG(AVG(VALUE)) OVER (Order By YEAR),'P') AS YOY_PercentChange\r\n",
+                "FROM Dataset\r\n",
+                "WHERE Products_Name = 'Salmon'\r\n",
+                "GROUP BY Year,Products_Name"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "d299dcde-9ce4-4461-8ba3-a87a209a7ae7",
+                "language": "sql"
+            },
+            "outputs": [
+{
+    "output_type": "display_data",
+    "data": {
+        "text/html": "(8 rows affected)"
+    },
+    "metadata": {}
+}, {
+    "output_type": "display_data",
+    "data": {
+        "text/html": "Total execution time: 00:00:00.022"
+    },
+    "metadata": {}
+}, {
+    "output_type": "execute_result",
+    "metadata": {},
+    "execution_count": 9,
+    "data": {
+        "application/vnd.dataresource+json": {
+            "schema": {
+                "fields": [
+                    {
+                        "name": "Year"
+                    },
+                    {
+                        "name": "Products_Name"
+                    },
+                    {
+                        "name": "Present"
+                    },
+                    {
+                        "name": "Previous"
+                    },
+                    {
+                        "name": "YOY_PercentChange"
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "Year": "2017",
+                    "Products_Name": "Salmon",
+                    "Present": "21.49",
+                    "Previous": "NULL",
+                    "YOY_PercentChange": "NULL"
+                },
+                {
+                    "Year": "2018",
+                    "Products_Name": "Salmon",
+                    "Present": "22.08",
+                    "Previous": "21.49",
+                    "YOY_PercentChange": "2.75%"
+                },
+                {
+                    "Year": "2019",
+                    "Products_Name": "Salmon",
+                    "Present": "23.05",
+                    "Previous": "22.08",
+                    "YOY_PercentChange": "4.40%"
+                },
+                {
+                    "Year": "2020",
+                    "Products_Name": "Salmon",
+                    "Present": "22.05",
+                    "Previous": "23.05",
+                    "YOY_PercentChange": "-4.33%"
+                },
+                {
+                    "Year": "2021",
+                    "Products_Name": "Salmon",
+                    "Present": "22.89",
+                    "Previous": "22.05",
+                    "YOY_PercentChange": "3.78%"
+                },
+                {
+                    "Year": "2022",
+                    "Products_Name": "Salmon",
+                    "Present": "25.37",
+                    "Previous": "22.89",
+                    "YOY_PercentChange": "10.86%"
+                },
+                {
+                    "Year": "2023",
+                    "Products_Name": "Salmon",
+                    "Present": "25.8",
+                    "Previous": "25.37",
+                    "YOY_PercentChange": "1.70%"
+                },
+                {
+                    "Year": "2024",
+                    "Products_Name": "Salmon",
+                    "Present": "26.01",
+                    "Previous": "25.8",
+                    "YOY_PercentChange": "0.82%"
+                }
+            ]
+        },
+        "text/html": [
+            "<table>",
+            "<tr><th>Year</th><th>Products_Name</th><th>Present</th><th>Previous</th><th>YOY_PercentChange</th></tr>",
+            "<tr><td>2017</td><td>Salmon</td><td>21.49</td><td>NULL</td><td>NULL</td></tr>",
+            "<tr><td>2018</td><td>Salmon</td><td>22.08</td><td>21.49</td><td>2.75%</td></tr>",
+            "<tr><td>2019</td><td>Salmon</td><td>23.05</td><td>22.08</td><td>4.40%</td></tr>",
+            "<tr><td>2020</td><td>Salmon</td><td>22.05</td><td>23.05</td><td>-4.33%</td></tr>",
+            "<tr><td>2021</td><td>Salmon</td><td>22.89</td><td>22.05</td><td>3.78%</td></tr>",
+            "<tr><td>2022</td><td>Salmon</td><td>25.37</td><td>22.89</td><td>10.86%</td></tr>",
+            "<tr><td>2023</td><td>Salmon</td><td>25.8</td><td>25.37</td><td>1.70%</td></tr>",
+            "<tr><td>2024</td><td>Salmon</td><td>26.01</td><td>25.8</td><td>0.82%</td></tr>",
+            "</table>"
+        ]
+    }
+}
+],
+            "execution_count": 9
         }
     ]
 }
