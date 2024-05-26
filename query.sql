@@ -1,7 +1,7 @@
 USE Retail
 ALTER TABLE dbo.dataset
-   ADD CONSTRAINT FK_cat FOREIGN KEY (category_id)
-      REFERENCES dbo.category (category_id)
+  ADD FOREIGN KEY (pro) REFERENCES C(SID),  
+  ADD FOREIGN KEY (customer_sid2) REFERENCES CUSTOMER(SID2); 
       ON DELETE CASCADE
       ON UPDATE CASCADE
 ;

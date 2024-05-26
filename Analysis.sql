@@ -622,119 +622,133 @@
                 "language": "sql"
             },
             "outputs": [
-{
-    "output_type": "display_data",
-    "data": {
-        "text/html": "(8 rows affected)"
-    },
-    "metadata": {}
-}, {
-    "output_type": "display_data",
-    "data": {
-        "text/html": "Total execution time: 00:00:00.022"
-    },
-    "metadata": {}
-}, {
-    "output_type": "execute_result",
-    "metadata": {},
-    "execution_count": 9,
-    "data": {
-        "application/vnd.dataresource+json": {
-            "schema": {
-                "fields": [
-                    {
-                        "name": "Year"
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(8 rows affected)"
                     },
-                    {
-                        "name": "Products_Name"
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.022"
                     },
-                    {
-                        "name": "Present"
-                    },
-                    {
-                        "name": "Previous"
-                    },
-                    {
-                        "name": "YOY_PercentChange"
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 9,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "Year"
+                                    },
+                                    {
+                                        "name": "Products_Name"
+                                    },
+                                    {
+                                        "name": "Present"
+                                    },
+                                    {
+                                        "name": "Previous"
+                                    },
+                                    {
+                                        "name": "YOY_PercentChange"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "Year": "2017",
+                                    "Products_Name": "Salmon",
+                                    "Present": "21.49",
+                                    "Previous": "NULL",
+                                    "YOY_PercentChange": "NULL"
+                                },
+                                {
+                                    "Year": "2018",
+                                    "Products_Name": "Salmon",
+                                    "Present": "22.08",
+                                    "Previous": "21.49",
+                                    "YOY_PercentChange": "2.75%"
+                                },
+                                {
+                                    "Year": "2019",
+                                    "Products_Name": "Salmon",
+                                    "Present": "23.05",
+                                    "Previous": "22.08",
+                                    "YOY_PercentChange": "4.40%"
+                                },
+                                {
+                                    "Year": "2020",
+                                    "Products_Name": "Salmon",
+                                    "Present": "22.05",
+                                    "Previous": "23.05",
+                                    "YOY_PercentChange": "-4.33%"
+                                },
+                                {
+                                    "Year": "2021",
+                                    "Products_Name": "Salmon",
+                                    "Present": "22.89",
+                                    "Previous": "22.05",
+                                    "YOY_PercentChange": "3.78%"
+                                },
+                                {
+                                    "Year": "2022",
+                                    "Products_Name": "Salmon",
+                                    "Present": "25.37",
+                                    "Previous": "22.89",
+                                    "YOY_PercentChange": "10.86%"
+                                },
+                                {
+                                    "Year": "2023",
+                                    "Products_Name": "Salmon",
+                                    "Present": "25.8",
+                                    "Previous": "25.37",
+                                    "YOY_PercentChange": "1.70%"
+                                },
+                                {
+                                    "Year": "2024",
+                                    "Products_Name": "Salmon",
+                                    "Present": "26.01",
+                                    "Previous": "25.8",
+                                    "YOY_PercentChange": "0.82%"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>Year</th><th>Products_Name</th><th>Present</th><th>Previous</th><th>YOY_PercentChange</th></tr>",
+                            "<tr><td>2017</td><td>Salmon</td><td>21.49</td><td>NULL</td><td>NULL</td></tr>",
+                            "<tr><td>2018</td><td>Salmon</td><td>22.08</td><td>21.49</td><td>2.75%</td></tr>",
+                            "<tr><td>2019</td><td>Salmon</td><td>23.05</td><td>22.08</td><td>4.40%</td></tr>",
+                            "<tr><td>2020</td><td>Salmon</td><td>22.05</td><td>23.05</td><td>-4.33%</td></tr>",
+                            "<tr><td>2021</td><td>Salmon</td><td>22.89</td><td>22.05</td><td>3.78%</td></tr>",
+                            "<tr><td>2022</td><td>Salmon</td><td>25.37</td><td>22.89</td><td>10.86%</td></tr>",
+                            "<tr><td>2023</td><td>Salmon</td><td>25.8</td><td>25.37</td><td>1.70%</td></tr>",
+                            "<tr><td>2024</td><td>Salmon</td><td>26.01</td><td>25.8</td><td>0.82%</td></tr>",
+                            "</table>"
+                        ]
                     }
-                ]
-            },
-            "data": [
-                {
-                    "Year": "2017",
-                    "Products_Name": "Salmon",
-                    "Present": "21.49",
-                    "Previous": "NULL",
-                    "YOY_PercentChange": "NULL"
-                },
-                {
-                    "Year": "2018",
-                    "Products_Name": "Salmon",
-                    "Present": "22.08",
-                    "Previous": "21.49",
-                    "YOY_PercentChange": "2.75%"
-                },
-                {
-                    "Year": "2019",
-                    "Products_Name": "Salmon",
-                    "Present": "23.05",
-                    "Previous": "22.08",
-                    "YOY_PercentChange": "4.40%"
-                },
-                {
-                    "Year": "2020",
-                    "Products_Name": "Salmon",
-                    "Present": "22.05",
-                    "Previous": "23.05",
-                    "YOY_PercentChange": "-4.33%"
-                },
-                {
-                    "Year": "2021",
-                    "Products_Name": "Salmon",
-                    "Present": "22.89",
-                    "Previous": "22.05",
-                    "YOY_PercentChange": "3.78%"
-                },
-                {
-                    "Year": "2022",
-                    "Products_Name": "Salmon",
-                    "Present": "25.37",
-                    "Previous": "22.89",
-                    "YOY_PercentChange": "10.86%"
-                },
-                {
-                    "Year": "2023",
-                    "Products_Name": "Salmon",
-                    "Present": "25.8",
-                    "Previous": "25.37",
-                    "YOY_PercentChange": "1.70%"
-                },
-                {
-                    "Year": "2024",
-                    "Products_Name": "Salmon",
-                    "Present": "26.01",
-                    "Previous": "25.8",
-                    "YOY_PercentChange": "0.82%"
                 }
-            ]
-        },
-        "text/html": [
-            "<table>",
-            "<tr><th>Year</th><th>Products_Name</th><th>Present</th><th>Previous</th><th>YOY_PercentChange</th></tr>",
-            "<tr><td>2017</td><td>Salmon</td><td>21.49</td><td>NULL</td><td>NULL</td></tr>",
-            "<tr><td>2018</td><td>Salmon</td><td>22.08</td><td>21.49</td><td>2.75%</td></tr>",
-            "<tr><td>2019</td><td>Salmon</td><td>23.05</td><td>22.08</td><td>4.40%</td></tr>",
-            "<tr><td>2020</td><td>Salmon</td><td>22.05</td><td>23.05</td><td>-4.33%</td></tr>",
-            "<tr><td>2021</td><td>Salmon</td><td>22.89</td><td>22.05</td><td>3.78%</td></tr>",
-            "<tr><td>2022</td><td>Salmon</td><td>25.37</td><td>22.89</td><td>10.86%</td></tr>",
-            "<tr><td>2023</td><td>Salmon</td><td>25.8</td><td>25.37</td><td>1.70%</td></tr>",
-            "<tr><td>2024</td><td>Salmon</td><td>26.01</td><td>25.8</td><td>0.82%</td></tr>",
-            "</table>"
-        ]
-    }
-}
-],
+            ],
             "execution_count": 9
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "    "
+            ],
+            "metadata": {
+                "azdata_cell_guid": "2cf21e10-f534-4a48-b49b-12a9aa0e646e",
+                "language": "sql"
+            },
+            "outputs": [],
+            "execution_count": null
         }
     ]
 }
