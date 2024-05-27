@@ -1,3 +1,4 @@
+USE [Inflation ]
 SELECT * FROM CombinedData;
 
 -- Getting YOY change for particular product across Canada
@@ -15,6 +16,8 @@ FROM CombinedData
 WHERE Products_Name = 'Salmon'
 
 GROUP BY Year,Products_Name
+
+
 
 -- Get Average prices across all provinces and years
 
@@ -78,7 +81,7 @@ ORDER BY Average_price DESC
 
 --Declaring variables to make it dyanamic and filter values based on the inputs
 
---We can aslos do this by stored procedures
+--We can also do this by stored procedures
 
 
 
