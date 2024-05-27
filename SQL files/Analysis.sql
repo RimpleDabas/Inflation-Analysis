@@ -133,3 +133,70 @@ ORDER BY
 
 
 
+
+
+-- we can  now get mom changes for the products
+SELECT Year, Month, Month_Number,
+
+    FORMAT((AVG(VALUE)-LAG(AVG(VALUE)) OVER (Order By YEAR,Month_Number))/LAG(AVG(VALUE)) OVER (Order By YEAR,Month_Number),'P') AS MOM_PercentChange
+
+FROM Datasets
+
+WHERE Products_Name = 'Salmon' AND Year = 2023
+
+GROUP BY Year,Month,Month_Number,Products_Name
+ORDER BY Month_Number;
+
+
+-- Query to retreive the most expensive products province and yearwise
+SELECT TOP 10 Year,Location,Products_Name ,ROUND(AVG(VALUE),2) AS Average_price
+
+FROM CombinedData
+
+WHERE Location = 'Ontario' AND Year = 2023 
+
+GROUP BY Year, Location,Products_Name
+
+ORDER BY Average_price DESC
+
+--Query to retrieve least expensive
+
+SELECT TOP 10 Year,Location,Products_Name ,ROUND(AVG(VALUE),2) AS Average_price
+
+FROM CombinedData
+
+WHERE Location = 'Ontario' AND Year = 2023 
+
+GROUP BY Year, Location,Products_Name
+
+ORDER BY Average_price
+
+
+--Using roll up to get average sacross different combinations
+
+SELECT Year,Location,Category, Products_Name, ROUND(AVG(VALUE),2) AS Price 
+FROM CombinedData
+Group BY ROLLUP(Year,Location,Category,Products_Name)
+HAVING Year = 2020;
+
+-- Using Rank window function to get deeeper insights without partition by Results are based on all rows
+
+SELECT Location,Month,Products_Name, VALUE,
+RANK() OVER ( ORDER BY VALUE DESC) AS Rank
+FROM
+CombinedData
+WHERE Year = 2023 ;
+
+
+WITH  Expensive AS
+    (
+    SELECT Location,Month,Products_Name, AVG(VALUE) AS Price,
+    RANK() OVER ( PARTITION BY LOCATION ORDER BY AVG(VALUE) DESC) AS Rank
+    FROM
+    CombinedData
+    WHERE Year = 2023 
+    GROUP BY Location,Month,Products_Name
+    )
+SELECT*
+FROM Expensive
+WHERE Rank = 1;
