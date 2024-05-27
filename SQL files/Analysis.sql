@@ -7,9 +7,9 @@ SELECT * FROM CombinedData;
 
 SELECT Year, Products_Name, ROUND(AVG(VALUE),2)AS Present,
 
-    LAG(ROUND(AVG(VALUE),2)) OVER (Order By YEAR) AS Previous,
+		LAG(ROUND(AVG(VALUE),2)) OVER (Order By YEAR) AS Previous,
 
-    FORMAT((AVG(VALUE)-LAG(AVG(VALUE)) OVER (Order By YEAR))/LAG(AVG(VALUE)) OVER (Order By YEAR),'P') AS YOY_PercentChange
+		FORMAT((AVG(VALUE)-LAG(AVG(VALUE)) OVER (Order By YEAR))/LAG(AVG(VALUE)) OVER (Order By YEAR),'P') AS YOY_PercentChange
 
 FROM CombinedData
 
@@ -23,30 +23,21 @@ GROUP BY Year,Products_Name
 
 
 
-SELECT Year, Location ,Category,ROUND(AVG(VALUE),2) AS Average_price
-
-FROM CombinedData
-
-GROUP BY Year, Location,category
-
+SELECT Year, Location, category, ROUND(AVG(VALUE), 2) AS Average_price
+FROM   CombinedData
+GROUP BY Year, Location, category
 ORDER BY Average_price DESC
-
 
 
 -- Narrow down the above result  based on category and Year
 
 
 
-SELECT Year, Location ,Category,ROUND(AVG(VALUE),2) AS Average_price
-
-FROM CombinedData
-
-WHERE Category = 'Meat & Seafood' AND Year = 2023
-
-GROUP BY Year, Location,category
-
+SELECT Year, Location, category, ROUND(AVG(VALUE), 2) AS Average_price
+FROM   CombinedData
+WHERE (category = 'Meat & Seafood') AND (Year = 2023)
+GROUP BY Year, Location, category
 ORDER BY Average_price DESC
-
 
 
 
@@ -55,26 +46,19 @@ ORDER BY Average_price DESC
 
 -- We can do the same to get the most expensive categories in Provinces
 
-SELECT Year, Location ,Category,ROUND(AVG(VALUE),2) AS Average_price
-
-FROM CombinedData
-
-WHERE Location = 'Ontario' AND Year = 2023
-
-GROUP BY Year, Location,category
-
+SELECT Year, Location, category, ROUND(AVG(VALUE), 2) AS Average_price
+FROM   CombinedData
+WHERE (Location = 'Ontario') AND (Year = 2023)
+GROUP BY Year, Location, category
 ORDER BY Average_price DESC
 
--- 
 
-SELECT Year, Month,Location,Category ,ROUND(AVG(VALUE),2) AS Average_price
+-- when waas this category the most expensive one duringf whole year
 
-FROM CombinedData
-
-WHERE Location = 'Ontario' AND Year = 2023 AND category = 'Meat & Seafood'
-
-GROUP BY Year,MONTH, Location,category
-
+SELECT Year, Month, Location, category, ROUND(AVG(VALUE), 2) AS Average_price
+FROM   CombinedData
+WHERE (Location = 'Ontario') AND (Year = 2023) AND (category = 'Meat & Seafood')
+GROUP BY Year, Month, Location, category
 ORDER BY Average_price DESC
 
 
@@ -149,28 +133,20 @@ ORDER BY Month_Number;
 
 
 -- Query to retreive the most expensive products province and yearwise
-SELECT TOP 10 Year,Location,Products_Name ,ROUND(AVG(VALUE),2) AS Average_price
-
-FROM CombinedData
-
-WHERE Location = 'Ontario' AND Year = 2023 
-
-GROUP BY Year, Location,Products_Name
-
+SELECT TOP (10) Year, Location, Products_Name, ROUND(AVG(VALUE), 2) AS Average_price
+FROM   CombinedData
+WHERE (Location = 'Ontario') AND (Year = 2023)
+GROUP BY Year, Location, Products_Name
 ORDER BY Average_price DESC
+
 
 --Query to retrieve least expensive
 
-SELECT TOP 10 Year,Location,Products_Name ,ROUND(AVG(VALUE),2) AS Average_price
-
-FROM CombinedData
-
-WHERE Location = 'Ontario' AND Year = 2023 
-
-GROUP BY Year, Location,Products_Name
-
+SELECT TOP (10) Year, Location, Products_Name, ROUND(AVG(VALUE), 2) AS Average_price
+FROM   CombinedData
+WHERE (Location = 'Ontario') AND (Year = 2023)
+GROUP BY Year, Location, Products_Name
 ORDER BY Average_price
-
 
 --Using roll up to get average sacross different combinations
 
@@ -181,7 +157,7 @@ HAVING Year = 2020;
 
 -- Using Rank window function to get deeeper insights without partition by Results are based on all rows
 
-SELECT Location,Month,Products_Name, VALUE,
+SELECT Location,Month,Products_Name, ROUND(VALUE,2) AS Price,
 RANK() OVER ( ORDER BY VALUE DESC) AS Rank
 FROM
 CombinedData
@@ -190,7 +166,7 @@ WHERE Year = 2023 ;
 
 WITH  Expensive AS
     (
-    SELECT Location,Month,Products_Name, AVG(VALUE) AS Price,
+    SELECT Location,Month,Products_Name, ROUND(AVG(VALUE),2) AS Price,
     RANK() OVER ( PARTITION BY LOCATION ORDER BY AVG(VALUE) DESC) AS Rank
     FROM
     CombinedData
@@ -200,3 +176,25 @@ WITH  Expensive AS
 SELECT*
 FROM Expensive
 WHERE Rank = 1;
+
+
+
+
+
+-- Geting Provinces where particular product is expensive 
+WITH New AS
+    (
+    SELECT Location,Month,Products_Name, ROUND(VALUE,2) AS Price,
+	RANK() OVER ( PARTITION BY Products_Name ORDER BY VALUE DESC) AS Rank
+	FROM
+	CombinedData
+	WHERE Year = 2021
+	)
+
+SELECT Location,Month,Products_Name
+FROM New
+WHERE Rank Between 1 AND 3 AND Products_Name = 'Canned pear'
+GROUP BY Location,Month,Products_Name;
+
+-- Getting same information from stored procedure
+EXEC GetTopRankedProducts @Year = 2023, @ProductName = 'Apples';
