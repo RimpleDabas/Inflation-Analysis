@@ -198,3 +198,9 @@ GROUP BY Location,Month,Products_Name;
 
 -- Getting same information from stored procedure
 EXEC GetTopRankedProducts @Year = 2023, @ProductName = 'Apples';
+
+
+--Pivot 
+SELECT Location,category,[2019],[2020],[2021],[2022],[2023]
+FROM (SELECT Location,category,VALUE ,Year FROM CombinedData) AS D
+PIVOT(AVG(VALUE)  FOR Year IN ([2019],[2020],[2021],[2022],[2023])) AS pvt;
