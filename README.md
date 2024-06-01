@@ -45,8 +45,7 @@ SELECT * FROM CombinedData;
     ~~~
 
   For analytical part created SSRS report was generated giving users to select year, location and category to see visualization and metrics.
-
-   ![] (SQL files\Results from SQL\Screenshot 2024-06-01 144850.png)
+ ![](https://github.com/RimpleDabas/RetailsAnalysis/blob/main/SQL%20files/Results%20from%20SQL/Screenshot%202024-06-01%20144850.png)
 
 
 
