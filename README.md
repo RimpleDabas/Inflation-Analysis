@@ -48,7 +48,9 @@ SELECT * FROM CombinedData;
  ![](https://github.com/RimpleDabas/RetailsAnalysis/blob/main/SQL%20files/Results%20from%20SQL/Screenshot%202024-06-01%20144850.png)
 
  ## Visualization 
- Dax measures were created in power BI and finally dashboard was created for visualization.
+ - Used DAX to create measures and required columns
+ - Created visualzations
+ - Created dashboard
 
 ## Insights
 - Overall infant formula is the most expensive product in all regions.
@@ -56,7 +58,7 @@ SELECT * FROM CombinedData;
 - For the last year Olive oil saw the largets increase in prices at 5.75 per litre and overall increse of 58%
 - Limes, lemons are amongst the cheapest products in all provinces
 - Amongst categories friuts and vegetables is the most affordable option as it is the cheapest
-- Although infant formula saw the most yearly increase, New Brunswick has the exception with Beef top cut siloin the largest increase of 37%.
+- Although infant formula saw the most yearly increase, New Brunswick has the exception with Beef top cut siloin the largest increase of 37% .
 
 
 
