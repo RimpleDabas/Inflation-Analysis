@@ -56,7 +56,7 @@ SELECT * FROM CombinedData;
 - For the last year Olive oil saw the largets increase in prices at 5.75 per litre and overall increse of 58%
 - Limes, lemons are amongst the cheapest products in all provinces
 - Amongst categories friuts and vegetables is the most affordable option as it is the cheapest
-- Although infant formula saw the most yearly increase, New Brunswick has the exception with Beef top cut siloin the largest increase.
+- Although infant formula saw the most yearly increase, New Brunswick has the exception with Beef top cut siloin the largest increase of 37%.
 
 
 
