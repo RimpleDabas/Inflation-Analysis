@@ -50,7 +50,7 @@ SELECT * FROM CombinedData;
  ## Visualization 
  Dax measures were created in power BI and finally dashboard was created for visualization.
 
-Insights
+## Insights
 - Overall infant formula is the most expensive product in all regions.
 - Over the last in Canada, Infant formula saw the largest percent increse of around 18%
 - For the last year Olive oil saw the largets increase in prices at 5.75 per litre and overall increse of 58%
