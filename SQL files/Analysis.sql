@@ -181,7 +181,7 @@ WHERE Rank = 3;
 
 
 
--- Geting Provinces where particular product is expensive 
+-- Getting Provinces where particular product is expensive 
 WITH New AS
     (
     SELECT Location,Month,Products_Name, ROUND(VALUE,2) AS Price,
