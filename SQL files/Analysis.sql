@@ -23,7 +23,7 @@ GROUP BY Year,Products_Name
 
 
 
-SELECT Year, Location, category, ROUND(AVG(VALUE), 2) AS Average_price
+SELECT  Year, Location, category, ROUND(AVG(VALUE), 2) AS Average_price
 FROM   CombinedData
 GROUP BY Year, Location, category
 ORDER BY Average_price DESC
@@ -53,7 +53,7 @@ GROUP BY Year, Location, category
 ORDER BY Average_price DESC
 
 
--- when waas this category the most expensive one duringf whole year
+-- when waas this category the most expensive during whole year
 
 SELECT Year, Month, Location, category, ROUND(AVG(VALUE), 2) AS Average_price
 FROM   CombinedData
@@ -153,7 +153,7 @@ ORDER BY Average_price
 SELECT Year,Location,Category, Products_Name, ROUND(AVG(VALUE),2) AS Price 
 FROM CombinedData
 Group BY ROLLUP(Year,Location,Category,Products_Name)
-HAVING Year = 2020;
+HAVING Year = 2023;
 
 -- Using Rank window function to get deeeper insights without partition by Results are based on all rows
 
@@ -206,10 +206,3 @@ FROM (SELECT Location,category,VALUE ,Year FROM CombinedData) AS D
 PIVOT(AVG(VALUE)  FOR Year IN ([2019],[2020],[2021],[2022],[2023])) AS pvt;
 
 
-SELECT Year, Products_Name, ROUND(AVG(VALUE),2)AS Present
-
-FROM CombinedData
-
-WHERE Products_Name = 'Salmon'
-
-GROUP BY Year,Products_Name

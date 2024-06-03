@@ -55,9 +55,9 @@ SELECT * FROM CombinedData;
 ## Insights
 - Overall infant formula is the most expensive product in all regions.
 - Over the last in Canada, Infant formula saw the largest percent increse of around 18%
-- For the last year Olive oil saw the largets increase in prices at 5.75 per litre and overall increse of 58%
+- For the last year in Ontario, Olive oil saw the largets increase in prices at 5.75 per litre and overall increse of 58%
 - Limes, lemons are amongst the cheapest products in all provinces
-- Amongst categories friuts and vegetables is the most affordable option as it is the cheapest
+- Amongst categories fruits and vegetables is the most affordable option as it is the cheapest
 - Although infant formula saw the most yearly increase, New Brunswick has the exception with Beef top cut siloin the largest increase of 37% .
 
 
