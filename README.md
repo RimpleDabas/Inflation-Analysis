@@ -3,7 +3,7 @@ The aim of this project is do analysis of retail prices on selected products fro
 
 # Steps and tools used
 - Extraction and Transformation - Python
-- Loading and Analysis - SQL Mysqlserver  (SSMS)
+- Loading and Analysis - SQL Server  (SSMS)
 - Reporting and Visualization SSRS,DAX and PowerBI
 
 The dataset contains average monthly prices for products across Canadian provinces over the span of 7 years. 
