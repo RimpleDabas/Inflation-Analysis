@@ -51,7 +51,7 @@ SELECT * FROM CombinedData;
  - Used DAX to create measures and required columns
  - Created visualzations
  - Created dashboard
- ![image](Scree)
+ ![image](https://github.com/RimpleDabas/RetailsAnalysis/blob/main/SQL%20files/Results%20from%20SQL/Dashboard.png)
 
 ## Insights
 - Overall infant formula is the most expensive product in all regions.
