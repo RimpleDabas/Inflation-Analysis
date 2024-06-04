@@ -12,7 +12,8 @@
     <TargetDatasetFolder>Datasets</TargetDatasetFolder>
     <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
     <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
-    <TargetServerURL>http://localhost/reportserver_DABAS/SQLEXPRESS</TargetServerURL>
+    <TargetServerURL>http://dabas/ReportServer</TargetServerURL>
+    <StartItem>ANALYSIS.rdl</StartItem>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'DebugLocal' ">
     <FullPath>DebugLocal</FullPath>
