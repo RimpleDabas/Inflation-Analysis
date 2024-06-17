@@ -48,7 +48,7 @@ SELECT * FROM CombinedData;
  ## Visualization 
  - Used DAX to create measures and required columns
  - Created visualzations
- - Created dashboard
+ 
  ![image](https://github.com/RimpleDabas/RetailsAnalysis/blob/main/SQL%20files/Results%20from%20SQL/Dashboard.png)
 
 ## Few Insights
