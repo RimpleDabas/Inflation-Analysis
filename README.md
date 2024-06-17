@@ -44,8 +44,6 @@ SELECT * FROM CombinedData;
     PIVOT(AVG(VALUE)  FOR Year IN ([2019],[2020],[2021],[2022],[2023])) AS pvt; 
     ~~~
 
-  For analytical part created SSRS report was generated giving users to select year, location and category to see visualization and metrics.
- ![](https://github.com/RimpleDabas/RetailsAnalysis/blob/main/SQL%20files/Results%20from%20SQL/Screenshot%202024-06-01%20144850.png)
 
  ## Visualization 
  - Used DAX to create measures and required columns
@@ -53,13 +51,22 @@ SELECT * FROM CombinedData;
  - Created dashboard
  ![image](https://github.com/RimpleDabas/RetailsAnalysis/blob/main/SQL%20files/Results%20from%20SQL/Dashboard.png)
 
-## Insights
+## Few Insights
 - Overall infant formula is the most expensive product in all regions.
 - Over the last in Canada, Infant formula saw the largest percent increse of around 18%
 - For the last year in Ontario, Olive oil saw the largets increase in prices at 5.75 per litre and overall increse of 58%
 - Limes, lemons are amongst the cheapest products in all provinces
 - Amongst categories fruits and vegetables is the most affordable option as it is the cheapest
 - Although infant formula saw the most yearly increase, New Brunswick has the exception with Beef top cut siloin the largest increase of 37% .
+
+## Recommendations
+Some measures that the Government can take are 
+-  **Implement Price Controls**: Establish temporary price ceilings on essential goods, such as infant formula and staple food items, to prevent excessive price hikes
+- **Subsidies and Incentives**: Provide subsidies or tax incentives for local producers of essential goods to reduce production costs and stabilize prices
+- **Investment in Agriculture**: Invest in agricultural infrastructure and technology to boost productivity and reduce dependence on imports, which can be susceptible to global price fluctuations
+- **Regular Monitoring**: Increase monitoring of price changes and market conditions to quickly identify and address instances of price gouging
+- **Price Transparency**: Increase price transparency through public awareness campaigns and online platforms that allow consumers to compare prices across retailers.
+- **Enhance Logistics**: Improve supply chain logistics to reduce transportation costs and inefficiencies that contribute to higher prices.
 
 
 
